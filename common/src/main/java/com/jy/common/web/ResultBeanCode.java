@@ -2,12 +2,19 @@ package com.jy.common.web;
 
 import lombok.Getter;
 
+/**
+ * 响应编码枚举类
+ * 
+ * @author jinchunzhao
+ * @version 1.0
+ * @date 2021-07-31 11:22
+ */
 @Getter
 public enum ResultBeanCode {
 
     SUCCESS("200", "成功"),
 
-    FAIL("1001", "失败"),
+    FAIL("400", "失败"),
 
     ERROR("500","系统错误"),
 

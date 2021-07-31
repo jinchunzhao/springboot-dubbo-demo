@@ -63,6 +63,16 @@ public class ResultBean<T> {
         return new ResultBean(ResultBeanCode.FAIL);
     }
 
+    public static <T> ResultBean<T> failed(String msg) {
+
+        return new ResultBean(ResultBeanCode.FAIL.getCode(),msg);
+    }
+
+    public static <T> ResultBean<T> failed(String code,String msg) {
+
+        return new ResultBean(code,msg);
+    }
+
     public static <T> ResultBean<T> failed(T data) {
 
         return build(ResultBeanCode.FAIL, data);
