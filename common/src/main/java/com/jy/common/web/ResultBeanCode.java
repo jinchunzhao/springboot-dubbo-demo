@@ -3,7 +3,7 @@ package com.jy.common.web;
 import lombok.Getter;
 
 @Getter
-public enum ResultCode {
+public enum ResultBeanCode {
 
     SUCCESS("200", "成功"),
 
@@ -17,7 +17,7 @@ public enum ResultCode {
     String message;
 
 
-    ResultCode(String code, String message) {
+    ResultBeanCode(String code, String message) {
         this.code = code;
         this.message = message;
     }
