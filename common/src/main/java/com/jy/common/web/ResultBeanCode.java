@@ -7,7 +7,7 @@ import lombok.Getter;
  * 
  * @author jinchunzhao
  * @version 1.0
- * @date 2021-07-31 11:22
+ * @date 2021-07-31 11:24
  */
 @Getter
 public enum ResultBeanCode {
@@ -27,5 +27,13 @@ public enum ResultBeanCode {
     ResultBeanCode(String code, String message) {
         this.code = code;
         this.message = message;
+    }
+
+    @Override
+    public String toString() {
+        return "ResultBeanCode{" +
+                "code='" + code + '\'' +
+                ", message='" + message + '\'' +
+                '}';
     }
 }

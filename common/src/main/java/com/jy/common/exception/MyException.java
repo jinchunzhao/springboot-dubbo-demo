@@ -37,7 +37,7 @@ public class MyException extends RuntimeException {
         this.msg = msg;
         this.code = ResultBeanCode.FAIL.getCode();
     }
-    public MyException() { }
+    private MyException() { }
 
 
 }
