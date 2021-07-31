@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: dubbo-user-provider
+  profiles:
+    active: dev
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  mvc:
+    throw-exception-if-no-handler-found: true
+
+# Mybatis
+#pojo别名扫描包\
+mybatis-plus:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath*:mapper/**/*.xml
+  type-aliases-package: com.jy.common.pojo
+
+logging:
+  config: classpath:logback-spring.xml

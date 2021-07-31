@@ -9,11 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.jy</groupId>
-    <artifactId>order-web</artifactId>
+    <artifactId>user-server</artifactId>
     <version>1.0.0</version>
-    <name>order-web</name>
-    <description>订单接口响应层</description>
-
+    <name>user-server</name>
+    <description>用户服务</description>
     <dependencies>
         <dependency>
             <groupId>com.jy</groupId>
@@ -24,8 +23,10 @@
             <groupId>com.jy</groupId>
             <artifactId>api</artifactId>
             <version>1.0.0</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
+
 
 
 </project>

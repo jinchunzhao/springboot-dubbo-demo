@@ -29,6 +29,9 @@
     <modules>
         <module>common</module>
         <module>api</module>
+        <module>user-server</module>
+        <module>order-server</module>
+        <module>order-web</module>
     </modules>
 
     <dependencies>
