@@ -35,16 +35,18 @@ public class BaseEntity implements Serializable {
     private Long updateUserId;
 
     /**
+     * 记录创建时间，即本条记录的新增时间
+     */
+    @ApiModelProperty(value = "记录创建时间，即本条记录的新增时间")
+    @TableField(value = "create_time",fill = FieldFill.INSERT)
+    private Date createTime;
+
+    /**
      * 最后操作时间，本条记录的新增、修改动作，即更新本时间戳
      */
     @ApiModelProperty(value = "最后操作时间，本条记录的新增、修改动作，即更新本时间戳")
     @TableField(value = "update_time",fill = FieldFill.UPDATE)
     private Date updateTime;
 
-    /**
-     * 记录创建时间，即本条记录的新增时间
-     */
-    @ApiModelProperty(value = "记录创建时间，即本条记录的新增时间")
-    @TableField(value = "create_time",fill = FieldFill.INSERT)
-    private Date createTime;
+
 }

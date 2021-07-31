@@ -2,4 +2,50 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.jy.order.dao.OrderDao" >
 
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        o.id, o.user_id , o.order_status , o.pay_status , o.shipping_status ,o.address,o.consignee,
+        o.money_paid,o.pay_amount,o.confirm_time,o.pay_time
+        o.create_user_id , o.update_user_id,o.update_time , o.create_time
+    </sql>
+
+    <resultMap id="queryPageMap" type="com.jy.common.pojo.Order">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="order_status" property="orderStatus"/>
+        <result column="pay_status" property="payStatus"/>
+        <result column="shipping_status" property="shippingStatus"/>
+        <result column="address" property="address"/>
+        <result column="consignee" property="consignee"/>
+        <result column="money_paid" property="moneyPaid"/>
+        <result column="pay_amount" property="payAmount"/>
+        <result column="confirm_time" property="confirmTime"/>
+        <result column="pay_time" property="payTime"/>
+        <result column="create_user_id" property="createUserId"/>
+        <result column="update_user_id" property="updateUserId"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="create_time" property="createTime"/>
+
+        <association property="user" javaType="com.jy.common.pojo.User">
+            <id column="user_id" property="id"/>
+            <result column="user_name" property="userName"/>
+        </association>
+    </resultMap>
+
+    <!--   分页查询订单信息-->
+    <select id="queryPageList" resultMap="queryPageMap">
+
+        SELECT <include refid="Base_Column_List"/>,u.user_name
+        FROM u_order o
+        LEFT JOIN sys_user u ON o.user_id = u.id
+        <where>
+            <if test="keyWord != null and keyWord != '' ">
+                and o.order_status = #{keyWord}
+            </if>
+        </where>
+
+
+
+    </select>
+
 </mapper>

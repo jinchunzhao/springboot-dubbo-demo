@@ -8,9 +8,9 @@ server:
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://127.0.0.1:3306/jy_plus?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimeZone=GMT%2B8
+    url: jdbc:mysql://8.129.109.34/dubbo_demo?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimeZone=GMT%2B8
     username: root
-    password: root
+    password: 123456
     #配置初始化大小
     initialSize: 1
     #回收空闲连接时，将保证至少有minIdle个连接
@@ -34,11 +34,11 @@ spring:
       id: dubbo-user-provider
       name: dubbo-user-provider
     registry:
-      address: zookeeper://127.0.0.1:2181;zookeeper://127.0.0.1:2182;zookeeper://127.0.0.1:2183
+      address: zookeeper://8.129.109.34:2181;zookeeper://8.129.109.34:2182;zookeeper://8.129.109.34:2183
     server: true
     protocol:
       name: dubbo
-      port: 20884
+      port: 20881
 
   jpa:
     database: mysql

@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 
  * @author jinchunzhao
  * @version 1.0
- * @date 2021-07-31 16:35
+ * @date 2021-07-31 16:42
  */
 @EnableDubboConfiguration
 @SpringBootApplication

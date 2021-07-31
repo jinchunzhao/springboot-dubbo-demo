@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -42,6 +43,13 @@ public class CustomGlobalExceptionHandler {
     public ResultBean ec(MyException e) {
         log.error("业务异常:", e);
         return ResultBean.failed(e.getCode(),e.getMessage());
+    }
+
+    @ResponseBody
+    @ExceptionHandler(value = MethodArgumentNotValidException.class)
+    public ResultBean ec(MethodArgumentNotValidException e) {
+        log.error("业务异常:", e);
+        return ResultBean.failed(e.getLocalizedMessage());
     }
 
 

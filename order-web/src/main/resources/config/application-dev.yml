@@ -1,5 +1,5 @@
 server:
-  port: 8002
+  port: 9001
   tomcat:
     max-threads: 50
 
@@ -31,16 +31,14 @@ spring:
     #logAbandoned: true
   dubbo:
     application:
-      id: dubbo-order-provider
-      name: dubbo-order-provider
+      id: dubbo-order-consumer
+      name: dubbo-order-consumer
     registry:
       address: zookeeper://8.129.109.34:2181;zookeeper://8.129.109.34:2182;zookeeper://8.129.109.34:2183
-    server: true
-    scan: com.jy.order.serverimpl
-    protocol:
-      name: dubbo
-      port: 20882
-      charset: UTF-8
-  jpa:
-    database: mysql
-    show-sql: true
+    consumer:
+      check: false
+    scan:
+      base-packages: com.jy.order.controller
+
+mconfig:
+  swagger-ui-open: true

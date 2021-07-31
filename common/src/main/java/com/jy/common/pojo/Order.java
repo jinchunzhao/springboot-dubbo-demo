@@ -18,7 +18,7 @@ import java.util.Date;
  * @date 2021-07-31 15:25
  */
 @Data
-@TableName(value = "good_order")
+@TableName(value = "u_order")
 public class Order extends IdFieldEntity {
 
     @ApiModelProperty(value = "用户ID")
@@ -63,6 +63,9 @@ public class Order extends IdFieldEntity {
     private Date payTime;
 
 
+    @ApiModelProperty(value = "下单人")
+    @TableField(exist = false)
+    private User user;
 
 
 
