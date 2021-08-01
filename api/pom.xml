@@ -6,7 +6,6 @@
         <groupId>com.jy</groupId>
         <artifactId>dubbo-demo</artifactId>
         <version>1.0.0</version>
-        <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.jy</groupId>
     <artifactId>api</artifactId>

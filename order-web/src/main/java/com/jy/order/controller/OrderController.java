@@ -13,6 +13,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -29,12 +30,14 @@ import java.util.List;
 @Api(value = "订单管理", tags = {"订单管理相关接口"})
 public class OrderController extends BaseController {
 
-    @Reference
+    @Reference(check = false,version = "1.0.0",url = "dubbo://127.0.0.1:20882",lazy = true)
     private OrderServer orderServer;
 
+
+    @ResponseBody
     @ApiOperation(value = "订单列表查询", notes = "订单列表分页查询")
     @PostMapping("/list")
-    public ResultBean<Page<Order>> list(@Validated @RequestBody PageParam<String> pageParam){
+    public ResultBean list(@Validated @RequestBody PageParam<String> pageParam){
         Page<Order> page = orderServer.queryPageList(pageParam.getParam(),buildPage(pageParam));
         return ResultBean.success(page);
     }

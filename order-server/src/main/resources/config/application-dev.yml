@@ -8,7 +8,7 @@ server:
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://8.129.109.34/dubbo_demo?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimeZone=GMT%2B8
+    url: jdbc:mysql://8.129.109.34:3306/dubbo-demo?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimeZone=GMT%2B8
     username: root
     password: 123456
     #配置初始化大小
@@ -34,7 +34,8 @@ spring:
       id: dubbo-order-provider
       name: dubbo-order-provider
     registry:
-      address: zookeeper://8.129.109.34:2181;zookeeper://8.129.109.34:2182;zookeeper://8.129.109.34:2183
+      address: zookeeper://127.0.0.1:2181
+      timeout: 60000
     server: true
     scan: com.jy.order.serverimpl
     protocol:

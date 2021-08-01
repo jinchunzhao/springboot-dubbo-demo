@@ -5,7 +5,7 @@
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         o.id, o.user_id , o.order_status , o.pay_status , o.shipping_status ,o.address,o.consignee,
-        o.money_paid,o.pay_amount,o.confirm_time,o.pay_time
+        o.money_paid,o.pay_amount,o.confirm_time,o.pay_time,
         o.create_user_id , o.update_user_id,o.update_time , o.create_time
     </sql>
 

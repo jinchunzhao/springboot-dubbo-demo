@@ -6,7 +6,6 @@
         <groupId>com.jy</groupId>
         <artifactId>dubbo-demo</artifactId>
         <version>1.0.0</version>
-        <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.jy</groupId>
     <artifactId>user-server</artifactId>
@@ -14,11 +13,6 @@
     <name>user-server</name>
     <description>用户服务</description>
     <dependencies>
-        <dependency>
-            <groupId>com.jy</groupId>
-            <artifactId>common</artifactId>
-            <version>1.0.0</version>
-        </dependency>
         <dependency>
             <groupId>com.jy</groupId>
             <artifactId>api</artifactId>

@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @version 1.0
  * @date 2021-07-31 18:58
  */
-//@EnableDubboConfiguration
+@EnableDubboConfiguration
 @SpringBootApplication
 public class OrderWebApplication {
 

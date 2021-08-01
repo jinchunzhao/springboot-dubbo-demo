@@ -1,6 +1,7 @@
 package com.jy.common.web;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
 import java.util.Date;
 
@@ -11,6 +12,7 @@ import java.util.Date;
  * @version 1.0
  * @date 2021-07-31 10:48
  */
+@Data
 public class ResultBean<T> {
 
     @ApiModelProperty(value = "编码：200, 404，500")
