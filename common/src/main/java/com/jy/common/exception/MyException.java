@@ -15,6 +15,7 @@ import java.util.Date;
 @Data
 public class MyException extends RuntimeException {
 
+    private static final long serialVersionUID = 3549232418394213890L;
     private String code = "400";
     private String msg;
     private Date timestamp;

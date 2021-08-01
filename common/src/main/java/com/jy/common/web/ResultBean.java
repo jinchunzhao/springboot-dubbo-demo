@@ -16,6 +16,7 @@ import java.util.Date;
 @Data
 public class ResultBean<T> implements Serializable {
 
+    private static final long serialVersionUID = 4935268037874834761L;
     @ApiModelProperty(value = "编码：200, 404，500")
     private String code;
 

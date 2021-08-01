@@ -2,9 +2,6 @@ package com.jy.order.serverimpl;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.dubbo.config.annotation.Service;
-import com.baomidou.mybatisplus.core.MybatisConfiguration;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.TableInfoHelper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jy.api.order.OrderServer;
@@ -15,7 +12,6 @@ import com.jy.common.pojo.User;
 import com.jy.common.web.ResultBean;
 import com.jy.order.dao.OrderDao;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.ibatis.builder.MapperBuilderAssistant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,7 +29,7 @@ import java.util.Objects;
  */
 @Slf4j
 @Component
-@Service(version = "1.0.0",interfaceClass = OrderServer.class,timeout = 130000)
+@Service(version = "1.0.0",interfaceClass = OrderServer.class,timeout = 1200000)
 public class OrderServerImpl extends ServiceImpl<OrderDao, Order> implements OrderServer {
 
     @Autowired

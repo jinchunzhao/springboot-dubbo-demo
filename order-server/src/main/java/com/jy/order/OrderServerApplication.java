@@ -3,6 +3,7 @@ package com.jy.order;
 import com.alibaba.dubbo.spring.boot.annotation.EnableDubboConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * 订单服务启动类
@@ -13,6 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @EnableDubboConfiguration
 @SpringBootApplication
+@ComponentScan(value = {"com.jy.**"})
 public class OrderServerApplication {
 
     public static void main(String[] args) {
