@@ -3,6 +3,7 @@ package com.jy.common.web;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -13,7 +14,7 @@ import java.util.Date;
  * @date 2021-07-31 10:48
  */
 @Data
-public class ResultBean<T> {
+public class ResultBean<T> implements Serializable {
 
     @ApiModelProperty(value = "编码：200, 404，500")
     private String code;

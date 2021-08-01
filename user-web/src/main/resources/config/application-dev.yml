@@ -1,5 +1,5 @@
 server:
-  port: 8001
+  port: 9002
   tomcat:
     max-threads: 50
 
@@ -31,15 +31,15 @@ spring:
     #logAbandoned: true
   dubbo:
     application:
-      id: dubbo-user-provider
-      name: dubbo-user-provider
+      id: dubbo-user-consumer
+      name: dubbo-user-consumer
     registry:
       address: zookeeper://127.0.0.1:2181
-    server: true
-    protocol:
-      name: dubbo
-      port: 20881
+      timeout: 30000
+    consumer:
+      check: false
+    scan:
+      base-packages: com.jy.user.controller
 
-  jpa:
-    database: mysql
-    show-sql: true
+mconfig:
+  swagger-ui-open: true

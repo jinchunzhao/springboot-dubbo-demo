@@ -42,7 +42,7 @@ public class CustomGlobalExceptionHandler {
     @ExceptionHandler(value = MyException.class)
     public ResultBean ec(MyException e) {
         log.error("业务异常:", e);
-        return ResultBean.failed(e.getCode(),e.getMessage());
+        return ResultBean.failed(e.getCode(),e.getMsg());
     }
 
     @ResponseBody

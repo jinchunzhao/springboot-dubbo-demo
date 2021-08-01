@@ -32,6 +32,7 @@
         <module>user-server</module>
         <module>order-server</module>
         <module>order-web</module>
+        <module>user-web</module>
     </modules>
 
     <dependencies>
