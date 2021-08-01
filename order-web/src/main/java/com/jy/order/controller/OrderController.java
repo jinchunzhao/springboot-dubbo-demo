@@ -81,8 +81,8 @@ public class OrderController extends BaseController {
     @ResponseBody
     @ApiOperation(value = "根据id查询订单详情", notes = "根据id查询订单详情")
     @GetMapping("/getById/{orderId}")
-    public ResultBean<Order> queryById(@PathVariable(value = "id") Long orderId){
-        Order order = orderServer.queryById(orderId);
+    public ResultBean<Order> queryById(@PathVariable(value = "orderId") String orderId){
+        Order order = orderServer.queryById(Long.valueOf(orderId));
         return ResultBean.success(order);
     }
 
