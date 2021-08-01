@@ -1,11 +1,15 @@
 package com.jy.order.serverimpl;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.dubbo.config.annotation.Service;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jy.api.order.OrderServer;
+import com.jy.api.user.UserServer;
 import com.jy.common.eums.OrderStatusEnum;
 import com.jy.common.pojo.Order;
+import com.jy.common.pojo.User;
 import com.jy.common.web.ResultBean;
 import com.jy.order.dao.OrderDao;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * 订单服务接口实现类
@@ -30,6 +35,9 @@ public class OrderServerImpl extends ServiceImpl<OrderDao, Order> implements Ord
 
     @Autowired
     private OrderDao orderDao;
+
+    @Reference
+    private UserServer userServer;
 
     @Override
     public Page<Order> queryPageList(String keyWord, Page<Order> page) {
@@ -53,5 +61,17 @@ public class OrderServerImpl extends ServiceImpl<OrderDao, Order> implements Ord
         }else{
             return ResultBean.failed();
         }
+    }
+
+    @Override
+    public Order queryById(Long orderId) {
+        Order order = this.getById(orderId);
+        if(Objects.nonNull(order) && Objects.nonNull(order.getUserId())){
+            Long userId = order.getUserId();
+            LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<User>().select(User::getId, User::getUserName, User::getTel).eq(User::getId, userId);
+            User user = userServer.getOne(queryWrapper);
+            order.setUser(user);
+        }
+        return order;
     }
 }

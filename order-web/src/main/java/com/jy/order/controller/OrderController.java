@@ -10,6 +10,8 @@ import com.jy.common.web.ResultBean;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -65,6 +67,23 @@ public class OrderController extends BaseController {
     @PostMapping("/createOrder")
     public ResultBean createOrder(@Validated @RequestBody Order order)throws Exception{
         return orderServer.createOrder(order);
+    }
+
+
+    /**
+     * 根据订单id查询订单信息
+     *
+     * @param orderId
+     *        订单id
+     * @return
+     *        结果信息
+     */
+    @ResponseBody
+    @ApiOperation(value = "根据id查询订单详情", notes = "根据id查询订单详情")
+    @GetMapping("/getById/{orderId}")
+    public ResultBean<Order> queryById(@PathVariable(value = "id") Long orderId){
+        Order order = orderServer.queryById(orderId);
+        return ResultBean.success(order);
     }
 
 }

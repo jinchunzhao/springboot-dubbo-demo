@@ -38,4 +38,18 @@ public interface OrderServer extends IService<Order> {
      *         任何异常
      */
     ResultBean createOrder(Order order) throws Exception;
+
+    /**
+     * 根据订单id查询订单信息
+     *
+     * <p>
+     *     用来测试rpc引入user服务
+     * </p>
+     *
+     * @param orderId
+     *        订单id
+     * @return
+     *        结果信息
+     */
+    Order queryById(Long orderId);
 }
