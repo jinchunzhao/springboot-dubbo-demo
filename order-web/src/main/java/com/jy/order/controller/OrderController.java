@@ -34,12 +34,37 @@ public class OrderController extends BaseController {
     private OrderServer orderServer;
 
 
+    /**
+     * 订单列表查询
+     *
+     * @param pageParam
+     *        分页信息
+     * @return 结果信息
+     */
     @ResponseBody
     @ApiOperation(value = "订单列表查询", notes = "订单列表分页查询")
     @PostMapping("/list")
-    public ResultBean list(@Validated @RequestBody PageParam<String> pageParam){
+    public ResultBean<Page<Order>> list(@Validated @RequestBody PageParam<String> pageParam){
         Page<Order> page = orderServer.queryPageList(pageParam.getParam(),buildPage(pageParam));
         return ResultBean.success(page);
+    }
+
+
+    /**
+     * 创建订单
+     *
+     * @param order
+     *        参数
+     * @return
+     *        结果信息
+     * @throws Exception
+     *         任何异常
+     */
+    @ResponseBody
+    @ApiOperation(value = "创建订单", notes = "创建订单")
+    @PostMapping("/createOrder")
+    public ResultBean createOrder(@Validated @RequestBody Order order)throws Exception{
+        return orderServer.createOrder(order);
     }
 
 }

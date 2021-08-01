@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.jy.common.pojo.Order;
 import com.jy.common.pojo.User;
+import com.jy.common.web.ResultBean;
 
 /**
  * 订单 服务service接口
@@ -25,4 +26,16 @@ public interface OrderServer extends IService<Order> {
      *        结果信息
      */
     Page<Order> queryPageList(String keyWord, Page<Order> buildPage);
+
+    /**
+     * 创建订单
+     *
+     * @param order
+     *        参数
+     * @return
+     *        结果信息
+     * @throws Exception
+     *         任何异常
+     */
+    ResultBean createOrder(Order order) throws Exception;
 }

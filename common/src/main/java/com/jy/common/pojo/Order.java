@@ -5,7 +5,10 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.jy.common.pojo.base.IdFieldEntity;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.hibernate.validator.constraints.Length;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Date;
@@ -21,6 +24,7 @@ import java.util.Date;
 @TableName(value = "u_order")
 public class Order extends IdFieldEntity {
 
+    @NotNull(message = "用户信息不能为空")
     @ApiModelProperty(value = "用户ID")
     @TableField(value = "user_id")
     private Long userId;
@@ -38,10 +42,14 @@ public class Order extends IdFieldEntity {
     @TableField(value = "shipping_status")
     private Integer shippingStatus;
 
+    @NotBlank(message = "收获地址不能为空")
+    @Length(max = 100,message = "收货地址字符长度不能超过100位")
     @ApiModelProperty(value = "收货地址")
     @TableField(value = "address")
     private String address;
 
+    @NotBlank(message = "收货人不能为空")
+    @Length(max = 30,message = "收货人字符长度不能超过30位")
     @ApiModelProperty(value = "收货人")
     @TableField(value = "consignee")
     private String consignee;
