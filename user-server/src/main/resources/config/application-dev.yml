@@ -63,9 +63,11 @@ spring:
       tables:
         sys_user:
           columns:
+            #密码aes加密
             password:
               cipherColumn: password
               encryptor: encryptor_aes
+            #手机号aes加密
             tel:
               cipherColumn: tel
               encryptor: encryptor_aes

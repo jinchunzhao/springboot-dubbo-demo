@@ -3,6 +3,7 @@ package com.jy.user.serverimpl;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
 import com.jy.api.user.UserServer;
@@ -77,5 +78,12 @@ public class UserServerImpl  implements UserServer {
         User user = userDao.selectById(userId);
         user.setPassword(null);
         return user;
+    }
+
+    @Override
+    public Page<User> queryPageList(String keyword, Page<User> page) {
+        List<User> users = userDao.queryPageList(keyword, page);
+        page.setRecords(users);
+        return page;
     }
 }

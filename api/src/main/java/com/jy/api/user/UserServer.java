@@ -1,6 +1,7 @@
 package com.jy.api.user;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.jy.common.pojo.User;
 import com.jy.common.web.ResultBean;
@@ -37,4 +38,17 @@ public interface UserServer{
      *        结果
      */
     User queryOneById(Long userId );
+
+    /**
+     * 用户分页列表查询
+     *
+     * @param keyword
+     *        查询参数
+     * @param page
+     *        分页参数
+     *
+     * @return
+     *        结果信息
+     */
+    Page<User> queryPageList(String keyword, Page<User> page);
 }

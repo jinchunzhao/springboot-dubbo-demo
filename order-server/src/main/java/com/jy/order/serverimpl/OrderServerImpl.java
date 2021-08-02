@@ -41,6 +41,7 @@ public class OrderServerImpl extends ServiceImpl<OrderDao, Order> implements Ord
     @Override
     public Page<Order> queryPageList(String keyWord, Page<Order> page) {
         List<Order> resList = orderDao.queryPageList(keyWord, page);
+        page.setRecords(resList);
         return page;
     }
 
