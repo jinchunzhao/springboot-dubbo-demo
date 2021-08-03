@@ -20,9 +20,9 @@ public enum ResultBeanCode {
 
     NOT_FOUND("404", "路径不存在");
 
-    String code;
+    private final String code;
 
-    String message;
+    private final String message;
 
     ResultBeanCode(String code, String message) {
         this.code = code;

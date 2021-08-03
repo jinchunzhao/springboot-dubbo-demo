@@ -10,6 +10,12 @@ package com.jy.common.utils;
 public class IDWorker {
 
     /**
+     * 私有化构造函数
+     */
+    private IDWorker() {
+    }
+
+    /**
      * 起始的时间戳
      */
     private final static long START_STMP = 1480166465631L;

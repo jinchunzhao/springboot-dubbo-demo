@@ -14,9 +14,9 @@ public enum ShippingStatusEnum {
 
     NON_SHIPMENTS(0, "未发货"), SHIPPED(1, "已发货"), RECEIVED(2, "已收货");
 
-    private Integer code;
+    private final Integer code;
 
-    private String name;
+    private final String name;
 
     ShippingStatusEnum(Integer code, String name) {
         this.code = code;

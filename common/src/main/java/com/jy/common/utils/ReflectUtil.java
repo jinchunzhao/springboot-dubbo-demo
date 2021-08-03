@@ -13,6 +13,12 @@ import java.lang.reflect.Type;
 public class ReflectUtil {
 
     /**
+     * 私有化构造函数
+     */
+    private ReflectUtil() {
+    }
+
+    /**
      * 获取父类泛型 类型集合
      * 
      * @param clazz
