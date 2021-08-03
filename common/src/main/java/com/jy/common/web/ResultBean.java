@@ -17,6 +17,7 @@ import java.util.Date;
 public class ResultBean<T> implements Serializable {
 
     private static final long serialVersionUID = 4935268037874834761L;
+
     @ApiModelProperty(value = "编码：200, 404，500")
     private String code;
 
@@ -33,7 +34,7 @@ public class ResultBean<T> implements Serializable {
         this.timestamp = new Date();
     }
 
-    public ResultBean( String code, String msg, T data) {
+    public ResultBean(String code, String msg, T data) {
         this.timestamp = new Date();
         this.code = code;
         this.msg = msg;
@@ -45,7 +46,6 @@ public class ResultBean<T> implements Serializable {
         this.code = code;
         this.msg = msg;
     }
-
 
     public static <T> ResultBean<T> success() {
 
@@ -69,12 +69,12 @@ public class ResultBean<T> implements Serializable {
 
     public static <T> ResultBean<T> failed(String msg) {
 
-        return new ResultBean(ResultBeanCode.FAIL.getCode(),msg);
+        return new ResultBean(ResultBeanCode.FAIL.getCode(), msg);
     }
 
-    public static <T> ResultBean<T> failed(String code,String msg) {
+    public static <T> ResultBean<T> failed(String code, String msg) {
 
-        return new ResultBean(code,msg);
+        return new ResultBean(code, msg);
     }
 
     public static <T> ResultBean<T> failed(T data) {
@@ -91,9 +91,8 @@ public class ResultBean<T> implements Serializable {
         return new ResultBean(resultBeanCode, data);
     }
 
-
-    public ResultBean(ResultBeanCode resultBeanCode,T data) {
-        this(resultBeanCode.getCode(), resultBeanCode.getMessage(),data);
+    public ResultBean(ResultBeanCode resultBeanCode, T data) {
+        this(resultBeanCode.getCode(), resultBeanCode.getMessage(), data);
     }
 
     public ResultBean(ResultBeanCode resultBeanCode) {

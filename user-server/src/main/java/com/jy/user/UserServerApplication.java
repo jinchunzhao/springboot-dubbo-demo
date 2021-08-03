@@ -1,9 +1,10 @@
 package com.jy.user;
 
-import com.alibaba.dubbo.spring.boot.annotation.EnableDubboConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+
+import com.alibaba.dubbo.spring.boot.annotation.EnableDubboConfiguration;
 
 /**
  * 用户服务启动类

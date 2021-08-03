@@ -3,7 +3,6 @@ package com.jy.api.order;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.jy.common.pojo.Order;
-import com.jy.common.pojo.User;
 import com.jy.common.web.ResultBean;
 
 /**
@@ -19,11 +18,10 @@ public interface OrderServer extends IService<Order> {
      * 分页查询订单信息
      *
      * @param keyWord
-     *        关键字
+     *            关键字
      * @param buildPage
-     *        分页信息
-     * @return
-     *        结果信息
+     *            分页信息
+     * @return 结果信息
      */
     Page<Order> queryPageList(String keyWord, Page<Order> buildPage);
 
@@ -31,25 +29,22 @@ public interface OrderServer extends IService<Order> {
      * 创建订单
      *
      * @param order
-     *        参数
-     * @return
-     *        结果信息
+     *            参数
+     * @return 结果信息
      * @throws Exception
-     *         任何异常
+     *             任何异常
      */
     ResultBean createOrder(Order order) throws Exception;
 
     /**
      * 根据订单id查询订单信息
-     *
      * <p>
-     *     用来测试rpc引入user服务
+     * 用来测试rpc引入user服务
      * </p>
      *
      * @param orderId
-     *        订单id
-     * @return
-     *        结果信息
+     *            订单id
+     * @return 结果信息
      */
     Order queryById(Long orderId);
 }

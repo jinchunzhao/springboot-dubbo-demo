@@ -31,32 +31,31 @@ import java.util.List;
  */
 @Slf4j
 @Component
-@Service(interfaceClass = UserServer.class,timeout = 60000)
-public class UserServerImpl  implements UserServer {
+@Service(interfaceClass = UserServer.class, timeout = 60000)
+public class UserServerImpl implements UserServer {
 
     @Autowired
     private UserDao userDao;
 
-    //can not find lambda cache for this entity [com.jy.common.pojo.User]
-//    @Override
-//    protected Class<User> currentModelClass() {
-//        Type[] genericParamClassArray = ReflectUtil.getGenericParamClassArray(getClass());
-//        if (genericParamClassArray == null || genericParamClassArray.length < 2) {
-//            log.warn("Warn: {} not set the actual class on superclass generic parameter", getClass().getSimpleName());
-//            return null;
-//        }
-//        return (Class<User>) genericParamClassArray[1];
-//    }
-
+    // can not find lambda cache for this entity [com.jy.common.pojo.User]
+    // @Override
+    // protected Class<User> currentModelClass() {
+    // Type[] genericParamClassArray = ReflectUtil.getGenericParamClassArray(getClass());
+    // if (genericParamClassArray == null || genericParamClassArray.length < 2) {
+    // log.warn("Warn: {} not set the actual class on superclass generic parameter", getClass().getSimpleName());
+    // return null;
+    // }
+    // return (Class<User>) genericParamClassArray[1];
+    // }
 
     @Transactional
     @Override
     public ResultBean userRegister(User user) {
-        int count = userDao.selectCount(new LambdaQueryWrapper<User>().eq(User::getUserName,user.getUserName()));
+        int count = userDao.selectCount(new LambdaQueryWrapper<User>().eq(User::getUserName, user.getUserName()));
 
-        if(count > 0){
+        if (count > 0) {
             String format = String.format("用户：【%s】，已存在，请勿重复注册", user.getUserName());
-            CastException.cast(ResultBeanCode.FAIL.getCode(),format);
+            CastException.cast(ResultBeanCode.FAIL.getCode(), format);
         }
 
         Date createdDate = new Date();
@@ -66,15 +65,15 @@ public class UserServerImpl  implements UserServer {
         user.setCreateUserId(0L);
         user.setUpdateUserId(0L);
         boolean save = SqlHelper.retBool(userDao.insert(user));
-        if(save){
+        if (save) {
             return ResultBean.success();
-        }else{
+        } else {
             return ResultBean.failed();
         }
     }
 
     @Override
-    public User queryOneById(Long userId ) {
+    public User queryOneById(Long userId) {
         User user = userDao.selectById(userId);
         user.setPassword(null);
         return user;

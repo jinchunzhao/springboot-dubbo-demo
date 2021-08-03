@@ -29,7 +29,7 @@ import java.util.Objects;
  */
 @Slf4j
 @Component
-@Service(version = "1.0.0",interfaceClass = OrderServer.class,timeout = 1200000)
+@Service(version = "1.0.0", interfaceClass = OrderServer.class, timeout = 1200000)
 public class OrderServerImpl extends ServiceImpl<OrderDao, Order> implements OrderServer {
 
     @Autowired
@@ -47,7 +47,7 @@ public class OrderServerImpl extends ServiceImpl<OrderDao, Order> implements Ord
 
     @Transactional
     @Override
-    public ResultBean createOrder(Order order) throws Exception{
+    public ResultBean createOrder(Order order) throws Exception {
         Date createdDate = new Date();
         order.setOrderStatus(OrderStatusEnum.UNCONFIRMED.getCode());
         order.setCreateUserId(order.getUserId());
@@ -56,9 +56,9 @@ public class OrderServerImpl extends ServiceImpl<OrderDao, Order> implements Ord
         order.setUpdateTime(createdDate);
         boolean save = this.save(order);
 
-        if(save){
+        if (save) {
             return ResultBean.success();
-        }else{
+        } else {
             return ResultBean.failed();
         }
     }
@@ -66,9 +66,9 @@ public class OrderServerImpl extends ServiceImpl<OrderDao, Order> implements Ord
     @Override
     public Order queryById(Long orderId) {
         Order order = this.getById(orderId);
-        if(Objects.nonNull(order) && Objects.nonNull(order.getUserId())){
-            //can not find lambda cache for this entity [com.jy.common.pojo.User]
-            //TableInfoHelper.initTableInfo(new MapperBuilderAssistant(new MybatisConfiguration(), ""), User.class);
+        if (Objects.nonNull(order) && Objects.nonNull(order.getUserId())) {
+            // can not find lambda cache for this entity [com.jy.common.pojo.User]
+            // TableInfoHelper.initTableInfo(new MapperBuilderAssistant(new MybatisConfiguration(), ""), User.class);
             User user = userServer.queryOneById(order.getUserId());
             order.setUser(user);
         }

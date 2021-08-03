@@ -1,6 +1,5 @@
 package com.jy.common.exception;
 
-
 import com.baomidou.mybatisplus.core.exceptions.MybatisPlusException;
 import com.jy.common.web.ResultBean;
 import org.mybatis.spring.MyBatisSystemException;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 
-
 /**
  * 自定义全局异常处理器
  *
@@ -29,14 +27,12 @@ public class CustomGlobalExceptionHandler {
 
     private Logger log = LoggerFactory.getLogger(this.getClass());
 
-
-
     @Order(-1)
     @ResponseBody
     @ExceptionHandler(value = {MyException.class})
     public ResultBean ec(MyException e) {
         log.error("MyException异常:", e);
-        return ResultBean.failed(e.getCode(),e.getMsg());
+        return ResultBean.failed(e.getCode(), e.getMsg());
     }
 
     @ResponseBody
@@ -62,8 +58,6 @@ public class CustomGlobalExceptionHandler {
         return ResultBean.failed();
     }
 
-
-
     /**
      * 捕捉MybatisPlusException异常，并格式化输出
      *
@@ -79,6 +73,7 @@ public class CustomGlobalExceptionHandler {
         log.error("MybatisPlusException:{},请求路径:{}", ex, request.getRequestURI(), ex);
         return ResultBean.failed();
     }
+
     /**
      * 捕捉BadSqlGrammarException异常，并格式化输出
      *
@@ -100,7 +95,7 @@ public class CustomGlobalExceptionHandler {
      */
     @ExceptionHandler(Exception.class)
     @ResponseBody
-    public ResultBean notFount(Exception e,HttpServletRequest request) {
+    public ResultBean notFount(Exception e, HttpServletRequest request) {
         log.error("Exception异常:", e);
         return ResultBean.failed();
     }

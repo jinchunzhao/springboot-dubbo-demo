@@ -23,19 +23,19 @@ import java.util.Date;
 public class User extends IdFieldEntity {
 
     @NotBlank(message = "用户名不能为空")
-    @Length(max = 25,message="用户名字符长度不能超过25位")
+    @Length(max = 25, message = "用户名字符长度不能超过25位")
     @ApiModelProperty(value = "用户昵称")
     @TableField(value = "user_name")
     private String userName;
 
     @NotBlank(message = "用户密码不能为空")
-    @Length(max = 25,message="用户密码字符长度不能超过25位")
+    @Length(max = 25, message = "用户密码字符长度不能超过25位")
     @ApiModelProperty(value = "用户密码")
     @TableField(value = "password")
     private String password;
 
     @NotBlank(message = "用户手机号不能为空")
-    @Length(min = 11,max = 11,message="用户手机号符长度必须是11位")
+    @Length(min = 11, max = 11, message = "用户手机号符长度必须是11位")
     @ApiModelProperty(value = "用户手机号")
     @TableField(value = "tel")
     private String tel;

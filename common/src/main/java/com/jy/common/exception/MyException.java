@@ -16,8 +16,11 @@ import java.util.Date;
 public class MyException extends RuntimeException {
 
     private static final long serialVersionUID = 3549232418394213890L;
+
     private String code = "400";
+
     private String msg;
+
     private Date timestamp;
 
     public MyException(String code, String msg) {
@@ -32,13 +35,12 @@ public class MyException extends RuntimeException {
         this.timestamp = new Date();
     }
 
-
     public MyException(String msg) {
         this.timestamp = new Date();
         this.msg = msg;
         this.code = ResultBeanCode.FAIL.getCode();
     }
-    private MyException() { }
 
+    private MyException() {}
 
 }

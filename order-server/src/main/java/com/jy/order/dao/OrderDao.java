@@ -22,11 +22,10 @@ public interface OrderDao extends BaseMapper<Order> {
      * 分页查询订单信息
      *
      * @param keyWord
-     *        关键字
+     *            关键字
      * @param page
-     *        分页信息
-     * @return
-     *        结果信息
+     *            分页信息
+     * @return 结果信息
      */
-    List<Order> queryPageList(@Param("keyWord") String keyWord,@Param("page") Page<Order> page);
+    List<Order> queryPageList(@Param("keyWord") String keyWord, @Param("page") Page<Order> page);
 }

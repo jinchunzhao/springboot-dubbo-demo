@@ -29,7 +29,6 @@ public class Order extends IdFieldEntity {
     @TableField(value = "user_id")
     private Long userId;
 
-
     @ApiModelProperty(value = "订单状态 0未确认 1已确认 2已取消 3无效 4退款")
     @TableField(value = "order_status")
     private Integer orderStatus;
@@ -43,13 +42,13 @@ public class Order extends IdFieldEntity {
     private Integer shippingStatus;
 
     @NotBlank(message = "收获地址不能为空")
-    @Length(max = 100,message = "收货地址字符长度不能超过100位")
+    @Length(max = 100, message = "收货地址字符长度不能超过100位")
     @ApiModelProperty(value = "收货地址")
     @TableField(value = "address")
     private String address;
 
     @NotBlank(message = "收货人不能为空")
-    @Length(max = 30,message = "收货人字符长度不能超过30位")
+    @Length(max = 30, message = "收货人字符长度不能超过30位")
     @ApiModelProperty(value = "收货人")
     @TableField(value = "consignee")
     private String consignee;
@@ -70,11 +69,8 @@ public class Order extends IdFieldEntity {
     @TableField(value = "pay_time")
     private Date payTime;
 
-
     @ApiModelProperty(value = "下单人")
     @TableField(exist = false)
     private User user;
-
-
 
 }

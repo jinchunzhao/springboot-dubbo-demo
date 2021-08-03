@@ -12,9 +12,7 @@ import lombok.Getter;
 @Getter
 public enum PayStatusEnum {
 
-    NON_PAY(0,"未支付"),
-    IN_PAY(1,"支付中"),
-    PAID(2,"已支付");
+    NON_PAY(0, "未支付"), IN_PAY(1, "支付中"), PAID(2, "已支付");
 
     private Integer code;
 
@@ -24,5 +22,5 @@ public enum PayStatusEnum {
         this.code = code;
         this.name = name;
     }
-    
+
 }

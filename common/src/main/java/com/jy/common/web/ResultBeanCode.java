@@ -16,13 +16,13 @@ public enum ResultBeanCode {
 
     FAIL("400", "失败"),
 
-    ERROR("500","系统错误"),
+    ERROR("500", "系统错误"),
 
-    NOT_FOUND("404","路径不存在");
+    NOT_FOUND("404", "路径不存在");
 
     String code;
-    String message;
 
+    String message;
 
     ResultBeanCode(String code, String message) {
         this.code = code;
@@ -31,9 +31,6 @@ public enum ResultBeanCode {
 
     @Override
     public String toString() {
-        return "ResultBeanCode{" +
-                "code='" + code + '\'' +
-                ", message='" + message + '\'' +
-                '}';
+        return "ResultBeanCode{" + "code='" + code + '\'' + ", message='" + message + '\'' + '}';
     }
 }

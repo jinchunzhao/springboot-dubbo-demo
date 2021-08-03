@@ -32,19 +32,18 @@ public class UserController extends BaseController {
     @Reference
     private UserServer userServer;
 
-
     /**
      * 用户列表查询
      *
      * @param pageParam
-     *        分页信息
+     *            分页信息
      * @return 结果信息
      */
     @ResponseBody
     @ApiOperation(value = "用户列表查询", notes = "用户列表分页查询")
     @PostMapping("/list")
-    public ResultBean<Page<User>> list(@Validated @RequestBody PageParam<String> pageParam){
-        Page<User> page = userServer.queryPageList(pageParam.getParam(),buildPage(pageParam));
+    public ResultBean<Page<User>> list(@Validated @RequestBody PageParam<String> pageParam) {
+        Page<User> page = userServer.queryPageList(pageParam.getParam(), buildPage(pageParam));
         return ResultBean.success(page);
     }
 
@@ -52,16 +51,15 @@ public class UserController extends BaseController {
      * 用户注册
      *
      * @param user
-     *        参数信息
-     * @return
-     *        结果信息
+     *            参数信息
+     * @return 结果信息
      * @throws Exception
-     *         任何异常
+     *             任何异常
      */
     @ResponseBody
     @ApiOperation(value = "用户注册", notes = "用户注册")
     @PostMapping("/register")
-    public ResultBean userRegister(@Validated @RequestBody User user)throws Exception{
+    public ResultBean userRegister(@Validated @RequestBody User user) throws Exception {
         return userServer.userRegister(user);
     }
 }

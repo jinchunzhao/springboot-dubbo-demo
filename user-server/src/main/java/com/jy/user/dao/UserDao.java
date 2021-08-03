@@ -8,7 +8,6 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-
 /**
  * user dao层
  *
@@ -19,16 +18,14 @@ import java.util.List;
 @Mapper
 public interface UserDao extends BaseMapper<User> {
 
-
     /**
      * 用户分页列表查询
+     * 
      * @param keyword
-     *        查询参数
+     *            查询参数
      * @param page
-     *        分页参数
-     *
-     * @return
-     *        结果信息
+     *            分页参数
+     * @return 结果信息
      */
-    List<User> queryPageList(@Param("keyword") String keyword,@Param("page") Page<User> page);
+    List<User> queryPageList(@Param("keyword") String keyword, @Param("page") Page<User> page);
 }

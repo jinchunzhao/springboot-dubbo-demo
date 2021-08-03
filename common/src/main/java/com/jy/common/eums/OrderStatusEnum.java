@@ -12,11 +12,7 @@ import lombok.Getter;
 @Getter
 public enum OrderStatusEnum {
 
-    UNCONFIRMED(0,"未确认"),
-    CONFIRMED(1,"已确认"),
-    CANCELLED(2,"已取消"),
-    INVALID(3,"无效"),
-    REFUND(4,"退款");
+    UNCONFIRMED(0, "未确认"), CONFIRMED(1, "已确认"), CANCELLED(2, "已取消"), INVALID(3, "无效"), REFUND(4, "退款");
 
     private Integer code;
 

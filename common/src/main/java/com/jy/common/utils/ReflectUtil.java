@@ -14,10 +14,11 @@ public class ReflectUtil {
 
     /**
      * 获取父类泛型 类型集合
+     * 
      * @param clazz
      * @return
      */
-    public static Type[] getGenericParamClassArray(Class<?> clazz){
+    public static Type[] getGenericParamClassArray(Class<?> clazz) {
         ParameterizedType genericSuperclass = getType(clazz);
         if (genericSuperclass == null) {
             throw new RuntimeException("Generic super class is null");
@@ -27,10 +28,10 @@ public class ReflectUtil {
     }
 
     private static ParameterizedType getType(Class<?> clazz) {
-        for(int index = 0; index < 5; ++index) {
+        for (int index = 0; index < 5; ++index) {
             Type superType = clazz.getGenericSuperclass();
             if (superType instanceof ParameterizedType) {
-                return (ParameterizedType)superType;
+                return (ParameterizedType) superType;
             }
 
             clazz = clazz.getSuperclass();
@@ -38,5 +39,5 @@ public class ReflectUtil {
 
         return null;
     }
-    
+
 }

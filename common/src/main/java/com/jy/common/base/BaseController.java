@@ -1,14 +1,16 @@
 package com.jy.common.base;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.jy.common.page.PageParam;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 
-import javax.servlet.http.HttpServletRequest;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.jy.common.page.PageParam;
 
 /**
  * 基础BaseController
@@ -19,20 +21,16 @@ import java.util.Date;
  */
 public class BaseController {
 
-
-
     /**
-     * 构建mybatis分页插件对象
-     *
-     * pageNum 大于0
+     * 构建mybatis分页插件对象 pageNum 大于0
      *
      * @param param
-     * @return
+     *        分页参数
+     * @return 分页对象
      */
     public Page buildPage(PageParam param) {
         return new Page(param.getPageNum(), param.getPageSize());
     }
-
 
     /**
      * 解决字符串转date失败
