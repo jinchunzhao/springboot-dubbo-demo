@@ -2,6 +2,7 @@ package com.jy.common.exception;
 
 import com.jy.common.web.ResultBeanCode;
 import lombok.Data;
+import lombok.Getter;
 
 import java.util.Date;
 
@@ -12,8 +13,8 @@ import java.util.Date;
  * @version 1.0
  * @date 2021-07-31 11:23
  */
-@Data
-public class MyException extends RuntimeException {
+@Getter
+public class MyException extends Exception {
 
     private static final long serialVersionUID = 3549232418394213890L;
 

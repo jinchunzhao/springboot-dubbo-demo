@@ -1,26 +1,26 @@
 package com.jy.user.serverimpl;
 
-import com.alibaba.dubbo.config.annotation.Service;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
-import com.jy.api.user.UserServer;
-import com.jy.common.exception.CastException;
-import com.jy.common.pojo.User;
-import com.jy.common.utils.ReflectUtil;
-import com.jy.common.web.ResultBean;
-import com.jy.common.web.ResultBeanCode;
-import com.jy.user.dao.UserDao;
-import lombok.extern.slf4j.Slf4j;
+import java.util.Date;
+import java.util.List;
+import java.util.Objects;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.lang.reflect.Type;
-import java.util.Date;
-import java.util.List;
+import com.alibaba.dubbo.config.annotation.Service;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
+import com.jy.api.user.UserServer;
+import com.jy.common.exception.CastException;
+import com.jy.common.exception.runtimeexception.CastRunTimeException;
+import com.jy.common.pojo.User;
+import com.jy.common.web.ResultBean;
+import com.jy.common.web.ResultBeanCode;
+import com.jy.user.dao.UserDao;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 用户服务接口实现类
@@ -50,7 +50,7 @@ public class UserServerImpl implements UserServer {
 
     @Transactional
     @Override
-    public ResultBean userRegister(User user) {
+    public ResultBean userRegister(User user) throws Exception {
         int count = userDao.selectCount(new LambdaQueryWrapper<User>().eq(User::getUserName, user.getUserName()));
 
         if (count > 0) {
@@ -75,6 +75,9 @@ public class UserServerImpl implements UserServer {
     @Override
     public User queryOneById(Long userId) {
         User user = userDao.selectById(userId);
+        if (Objects.isNull(user)) {
+            CastRunTimeException.cast("测试异常");
+        }
         user.setPassword(null);
         return user;
     }

@@ -1,6 +1,7 @@
 package com.jy.api.user;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.jy.common.exception.MyException;
 import com.jy.common.pojo.User;
 import com.jy.common.web.ResultBean;
 
@@ -22,7 +23,7 @@ public interface UserServer {
      * @throws Exception
      *             任何异常
      */
-    ResultBean userRegister(User user);
+    ResultBean userRegister(User user) throws Exception;
 
     /**
      * 根据条件查询数据

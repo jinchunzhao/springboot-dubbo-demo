@@ -1,5 +1,13 @@
 package com.jy.order.serverimpl;
 
+import java.util.Date;
+import java.util.List;
+import java.util.Objects;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -11,14 +19,8 @@ import com.jy.common.pojo.Order;
 import com.jy.common.pojo.User;
 import com.jy.common.web.ResultBean;
 import com.jy.order.dao.OrderDao;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 订单服务接口实现类
@@ -66,6 +68,7 @@ public class OrderServerImpl extends ServiceImpl<OrderDao, Order> implements Ord
     @Override
     public Order queryById(Long orderId) {
         Order order = this.getById(orderId);
+
         if (Objects.nonNull(order) && Objects.nonNull(order.getUserId())) {
             // can not find lambda cache for this entity [com.jy.common.pojo.User]
             // TableInfoHelper.initTableInfo(new MapperBuilderAssistant(new MybatisConfiguration(), ""), User.class);

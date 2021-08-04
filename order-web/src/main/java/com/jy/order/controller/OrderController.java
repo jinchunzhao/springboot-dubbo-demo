@@ -32,7 +32,7 @@ import java.util.List;
 @Api(value = "订单管理", tags = {"订单管理相关接口"})
 public class OrderController extends BaseController {
 
-    @Reference(check = false, version = "1.0.0", url = "dubbo://127.0.0.1:20882", lazy = true)
+    @Reference(check = false, version = "1.0.0", url = "dubbo://127.0.0.1:20883", lazy = true)
     private OrderServer orderServer;
 
     /**
@@ -76,8 +76,8 @@ public class OrderController extends BaseController {
     @ResponseBody
     @ApiOperation(value = "根据id查询订单详情", notes = "根据id查询订单详情")
     @GetMapping("/getById/{orderId}")
-    public ResultBean<Order> queryById(@PathVariable(value = "orderId") String orderId) {
-        Order order = orderServer.queryById(Long.valueOf(orderId));
+    public ResultBean<Order> queryById(@PathVariable(value = "orderId") Long orderId) {
+        Order order = orderServer.queryById(orderId);
         return ResultBean.success(order);
     }
 
